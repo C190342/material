@@ -6,7 +6,7 @@
 -->
     <div class="logo">
         <a href="{{ route('admin.dashboard') }}" class="simple-text logo-normal">
-        Creative Tim
+            {{ config('app.name') }}
         </a>
     </div>
     <div class="sidebar-wrapper">
@@ -23,10 +23,10 @@
                     <p>User Profile</p>
                 </a>
             </li>
-            <li class="nav-item {{ Route::currentRouteName() == 'admin.dashboard1' ? 'active' : '' }}">
-                <a class="nav-link" href="./tables.html">
-                    <i class="material-icons">content_paste</i>
-                    <p>Table List</p>
+            <li class="nav-item {{ Route::currentRouteName() == 'admin.settings' ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('admin.settings') }}">
+                    <i class="material-icons">settings</i>
+                    <p>Settings</p>
                 </a>
             </li>
             <li class="nav-item {{ Route::currentRouteName() == 'admin.dashboard2' ? 'active' : '' }}">

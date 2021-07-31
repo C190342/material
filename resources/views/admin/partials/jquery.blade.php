@@ -2,7 +2,7 @@
 <script src="{{ asset('backend/js/core/jquery.min.js') }}"></script>
 <script src="{{ asset('backend/js/core/popper.min.js') }}"></script>
 <script src="{{ asset('backend/js/core/bootstrap-material-design.min.js') }}"></script>
-<script src="https://unpkg.com/default-passive-events"></script>
+<script type="text/javascript" src="https://unpkg.com/default-passive-events"></script>
 <!-- Place this tag in your head or just before your close body tag. -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 <!-- Chartist JS -->
@@ -13,6 +13,8 @@
 <script src="{{ asset('backend/js/material-dashboard.js?v=2.1.0') }}"></script>
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script src="{{ asset('backend/demo/demo.js') }}"></script>
+
+<!-- https://cdn.jsdelivr.net/combine/gh/jquery/jquery@3.2/dist/jquery.min.js,gh/twbs/bootstrap@4.0.0/dist/js/bootstrap.min.js -->
 <script>
 $(document).ready(function() {
     $().ready(function() {

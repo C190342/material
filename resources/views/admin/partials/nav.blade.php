@@ -44,8 +44,8 @@
                         </p>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" data-color="purple" aria-labelledby="userDropdownMenuLink">
-                        <a class="dropdown-item" href="javascript:void(0)"><i class="material-icons">&#xE7FD;</i>Profile</a>
-                        <a class="dropdown-item" href="javascript:void(0)"><i class="material-icons">&#xE879;</i>Logout</a>
+                        <a class="dropdown-item" href="{{ route('admin.userprofile') }}"><i class="material-icons">&#xE7FD;</i>Profile</a>
+                        <a class="dropdown-item" href="{{ route('admin.logout') }}"><i class="material-icons">&#xE879;</i>Logout</a>
                     </div>
                 </li>
             </ul>

@@ -1,0 +1,617 @@
+https://www.larashout.com/laravel-ecommerce-application-development-introduction
+
+Make a ecommerce website
+
+================================== day 01
+https://www.larashout.com/laravel-e-commerce-application-development-initial-project-setup
+
+Creating Laravel Application
+Setting Up Github Repository
+Frontend and Backend Templates
+
+============= Creating Laravel Application
+
+composer create-project --prefer-dist laravel/laravel material
+php artisan serve
+
+============= Setting Up Github Repository
+
+// initialize a new git repository
+git init 
+
+// add all files to git
+git add . 
+
+// commit all files
+git commit -m "initial commit" 
+
+// add the remote origin of our Github repository
+git remote add origin https://github.com/C190342/material.git
+
+// Now push all files to Github.
+git push -u origin master
+
+============= Frontend and Backend Templates
+
+// Backend Templates
+https://github.com/pratikborsadiya/vali-admin
+
+// Frontend Templates
+https://bootstrap-ecommerce.com/
+
+
+================================== day 02
+https://www.larashout.com/laravel-e-commerce-application-development-assets-setup-using-laravel-mix
+
+.gitigonre Changes
+Copying Assets into the Project
+Installing Laravel Mix
+Setting Up webpack.mix.js File
+Compiling Assets
+Setting Up Admin Route
+Setting Up Admin Layout and Partials
+Creating Dashboard View
+Conclusion
+
+============= .gitigonre Changes
+
+// Open you .gitignore file from the root of your application
+.idea
+/public/backend
+/public/frontend
+/public/uploads
+
+============= Copying Assets into the Project
+
+============= Installing Laravel Mix
+
+npm install
+
+//Setting Up webpack.mix.js File
+mix.copyDirectory('resources/backend', 'public/backend');
+mix.copyDirectory('resources/frontend', 'public/frontend');
+
+============= Compiling Assets
+
+npm run watch
+
+============= Setting Up Admin Route
+
+// routes/web.php file
+Route::view('/admin', 'admin.dashboard.index');
+
+============= Setting Up Admin Layout and Partials
+
+============= Setting Up Admin Layout and Partials
+
+============= Creating Dashboard View
+
+================================== day 03
+https://www.larashout.com/admin-model-migration
+
+Database Configurations and Some Fixes
+Admin Model, Migration and Seed
+Adding Admin Seed to Database Seeder
+Running Migrations and Seed
+Final Word
+
+============= Database Configurations and Some Fixes
+
+// open you .env file and change the values of DB_DATABASE
+
+//Open AppServiceProvider from app/Providers folder
+use Illuminate\Support\Facades\Schema;
+public function boot()
+    {
+        Schema::defaultStringLength(191);
+    }
+
+// config/auth.php file
+'providers' => [
+    'users' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\User::class,
+    ],
+],
+
+============= Admin Model, Migration and Seed
+
+php artisan make:model Admin -m
+php artisan make:seed AdminsTableSeeder
+
+// Go to database/migrations folder and open admins migration file
+
+// open the Admin model class (app/Models/Admin.php) and replace the whole class
+
+// AdminsTableSeeder class from database/seeds folder
+
+============= Adding Admin Seed to Database Seeder
+
+// Open the DatabaseSeeder class from within the database/seeds folder
+$this->call(AdminsTableSeeder::class); // in the run() function
+
+============= Running Migrations and Seed
+
+php artisan migrate --seed
+
+================================== day 04
+https://www.larashout.com/backend-admin-authentication
+
+Setting Up Admin Guard
+Adding Admin Auth Routes
+Creating Admin Auth Controller
+Creating Admin Login Page
+Adding Admin Login Functionality
+Adding Admin Logout Functionality
+Redirecting Authenticated Admin To Dashboard Page
+Redirecting Unauthenticated Admin To Login Page
+
+============= Setting Up Admin Guard
+
+// add the admin guards in the config/auth.php file
+'guards' => [
+'providers' => [
+'passwords' => [
+
+============= Adding Admin Auth Routes
+
+// in our routes/web.php file
+require 'admin.php';
+
+// In routes/admin.php file
+Route::group(['prefix'  =>  'admin'], function () {
+    ...
+});
+
+============= Creating Admin Auth Controller
+
+php artisan make:controller Admin\LoginController
+
+// Open your LoginController and replace with the below one
+
+============= Creating Admin Login Page
+
+// add a new file in resources/views/admin/auth/ folder named login.blade.php
+
+// when you visit /admin/login URL
+** Illuminate\Contracts\Container\BindingResolutionException **
+** Target class [Admin\LoginController] does not exist. **
+
+// solution : in app/Providers/RouteServiceProvider.php file
+protected $namespace = 'App\Http\Controllers';
+
+// when you visit /admin/login URL
+** Trait "Illuminate\Foundation\Auth\AuthenticatesUsers" not found **
+
+// solution : the trait is removed in Laravel 7.x~
+composer require laravel/ui
+
+============= Adding Admin Login Functionality
+
+// add login() method to our LoginController
+
+============= Adding Admin Logout Functionality
+
+// add the logout function to LoginController class
+
+// open resources/views/admin/partials/nav.blade.php file and replace the Logout link
+<a class="dropdown-item" href="{{ route('admin.logout') }}"><i class="material-icons">&#xE879;</i>Logout</a>
+
+============= Redirecting Authenticated Admin To Dashboard Page
+
+// adjust the RedirectIfAuthenticated middleware which comes with the Laravel and located at app/Http/Middleware
+//-- Open RedirectIfAuthenticated file and update the handle() method
+
+============= Redirecting Unauthenticated Admin To Login Page
+
+// open app/Exceptions/Handler.php file
+
+================================== day 05
+https://www.larashout.com/base-controller-and-repository
+
+Why Base Controller and Repository?
+Creating Flash Messages Trait
+Creating Base Controller
+Creating Base Repository
+
+============= Why Base Controller and Repository?
+
+Sometime when creating any web application, 
+we mostly make our code messy due to the repetition of the same steps again and again. 
+For example, when we send a response from the controller we want to make sure if the request is Ajax 
+then send JSON response and if it’s an Http request then send the normal response.
+
+============= Creating Flash Messages Trait
+
+// Create a new folder inside app folder called Traits, and add a new php file in it named FlashMessages
+//-- Traits/FlashMessages.php
+//-- and edit this
+//-- add setter and getter functions for flash messages
+//-- add a new function to our FlashMessages trait called showFlashMessage.
+
+============= Creating Base Controller
+
+php artisan make:controller BaseController
+
+// add the FlashMessages trait 
+use App\Traits\FlashMessages;
+use FlashMessages;
+
+// set the page title and subtitle
+
+// add a new protected method to show error page with our custom message and type of error page we want to load.
+
+// add the responseJson method
+
+// redirect to a page or route if the request is HTTP, so we will add a responseRedirect method.
+
+// add a new function responseRedirectBack.
+
+============= Creating Base Repository
+
+// Create a new folder in app folder called Contracts and add a new file called BaseContract.php.
+Contracts/BaseContract.php
+
+// create a new folder in app folder, called Repositories and add a new file called BaseRepository.php
+Repositories/BaseRepository.php
+
+// implement the BaseContract in this class.
+
+// define a $model property in this class and inject the eloquent model class using the class constructor
+
+// implement all the methods we defined in the BaseContract
+
+================================== day 06
+https://www.larashout.com/settings-section-part-1
+
+Settings Model & Migration
+Settings Seed
+Setting Model Set and Get Methods
+Registering Setting Model as Facade
+Autoloading All Settings
+
+============= Settings Model & Migration
+
+php artisan make:model Setting -m
+
+// Open the migration file for settings, and update
+
+// open your Setting model and replace
+
+============= Settings Seed
+
+// add a database seed for our settings table
+php artisan make:seed SettingsTableSeeder
+
+// Open the SettingsTableSeeder class and add the $settings property in the class
+
+============= Setting Model Set and Get Methods
+
+// add two static methods in our app/Models/Setting model, the first will be get() and second will be set() method.
+
+============= Registering Setting Model as Facade
+
+// run the below command to generate a service provider.
+php artisan make:provider SettingServiceProvider
+
+//  in your config/app.php file.
+App\Providers\SettingServiceProvider::class,
+
+// open the SettingServiceProvider class and add the below code in the register method.
+
+============= Autoloading All Settings
+
+// To autoload all the settings update the boot() method of the SettingServiceProvider 
+
+// add Schema on top of SettingServiceProvider file
+use Illuminate\Support\Facades\Schema;
+
+================================== day 07
+https://www.larashout.com/settings-section-part-2
+
+Adding Setting Routes
+Creating Setting Controller
+Updating Settings Menu Links
+Creating File Upload Trait
+Creating Flash Message Partial
+Creating Settings Page Main View
+Adding Setting Sections Views
+Saving Settings using Setting Controller
+
+============= Adding Setting Routes
+
+// add some routes for our settings section
+Route::get('/settings', 'Admin\SettingController@index')->name('admin.settings');
+Route::post('/settings', 'Admin\SettingController@update')->name('admin.settings.update');
+
+============= Creating Setting Controller
+
+php artisan make:controller Admin\SettingController
+
+// SettingController is extending Controller class but we want to switch it to use our BaseController class
+
+// add two new methods in this class called index() and update()
+
+============= Updating Settings Menu Links
+
+// Open resources/views/admin/partials/sidebar.blade.php
+
+============= Creating File Upload Trait
+
+// Create a new PHP file in the app/Traits folder named UploadAble
+
+// image upload tutital
+https://www.larashout.com/laravel-image-upload-made-easy
+
+// Open your SettingController and include the trait
+use UploadAble;
+
+============= Creating Flash Message Partial
+
+// creata a partial view to show those flash messages
+// -- create a new file in resources/views/admin/partials folder and name it flash.blade.php
+
+============= Creating Settings Page Main View
+
+// create our setting page view
+// -- create a new folder inside resources/views/admin folder and name it settings
+// -- Inside this folder we will create a new file called index.blade.php.
+
+// Create a new folder named includes inside settings folder
+// -- Inside this folder create following files and leave them empty
+general.blade.php
+logo.blade.php
+footer_seo.blade.php
+social_links.blade.php
+analytics.blade.php
+payments.blade.php
+
+============= Adding Setting Sections Views
+
+// create the subviews of our main settings page one by one.
+
+
+
+============= Saving Settings using Setting Controller
+================================== day 02
+
+
+
+
+============= 
+============= 
+============= 
+============= 
+============= 
+============= 
+============= 
+
+================================== day 02
+
+
+
+
+============= 
+============= 
+============= 
+============= 
+============= 
+============= 
+============= 
+
+================================== day 02
+
+
+
+
+============= 
+============= 
+============= 
+============= 
+============= 
+============= 
+============= 
+================================== day 02
+
+
+
+
+============= 
+============= 
+============= 
+============= 
+============= 
+============= 
+============= 
+
+================================== day 02
+
+
+
+
+============= 
+============= 
+============= 
+============= 
+============= 
+============= 
+============= 
+
+================================== day 02
+
+
+
+
+============= 
+============= 
+============= 
+============= 
+============= 
+============= 
+============= 
+================================== day 02
+
+
+
+
+============= 
+============= 
+============= 
+============= 
+============= 
+============= 
+============= 
+
+================================== day 02
+
+
+
+
+============= 
+============= 
+============= 
+============= 
+============= 
+============= 
+============= 
+
+================================== day 02
+
+
+
+
+============= 
+============= 
+============= 
+============= 
+============= 
+============= 
+============= 
+================================== day 02
+
+
+
+
+============= 
+============= 
+============= 
+============= 
+============= 
+============= 
+============= 
+
+================================== day 02
+
+
+
+
+============= 
+============= 
+============= 
+============= 
+============= 
+============= 
+============= 
+
+================================== day 02
+
+
+
+
+============= 
+============= 
+============= 
+============= 
+============= 
+============= 
+============= 
+================================== day 02
+
+
+
+
+============= 
+============= 
+============= 
+============= 
+============= 
+============= 
+============= 
+
+================================== day 02
+
+
+
+
+============= 
+============= 
+============= 
+============= 
+============= 
+============= 
+============= 
+
+================================== day 02
+
+
+
+
+============= 
+============= 
+============= 
+============= 
+============= 
+============= 
+============= 
+================================== day 02
+
+
+
+
+============= 
+============= 
+============= 
+============= 
+============= 
+============= 
+============= 
+
+================================== day 02
+
+
+
+
+============= 
+============= 
+============= 
+============= 
+============= 
+============= 
+============= 
+
+================================== day 02
+
+
+
+
+============= 
+============= 
+============= 
+============= 
+============= 
+============= 
+
+============= 
+** ソースマップエラー: Error: request failed with status 404 **
+** DevTools failed to load SourceMap: Could not load content for… **
+
+// change 
+<link href="css/bootstrap.min.css" rel="stylesheet">
+// to
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+// OR  SourceMap ファイルを追加する
+min.css.map / min.js.map
+
+// OR f12 and change settings
+Enable JavaScript source maps / Enable JavaScript CSS source maps のチェックを外すと無効になります。

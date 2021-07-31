@@ -1,5 +1,5 @@
 @extends('admin.app')
-@section('title') User Profile  @endsection
+@section('title') Dashboard @endsection
 @section('content')
     <div class="row">
         <div class="col-xl-4 col-lg-12">
