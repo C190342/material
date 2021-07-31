@@ -1,0 +1,95 @@
+.dropdown .material-icons {
+    margin-right: .25rem;
+}
+i.material-icons {
+    top: -1px;
+    font-size: inherit;
+    position: relative;
+}
+
+/* notification bell number */
+.notification[data-color="purple"] {
+    background: linear-gradient(60deg, #7b1fa2, #913f9e);
+}
+.notification[data-color="azure"] {
+    background: linear-gradient(60deg, #029eb1, #25b1c3);
+}
+.notification[data-color="green"] {
+    background: linear-gradient(60deg, #288c6c, #4ea752);
+}
+.notification[data-color="orange"] {
+    background: linear-gradient(60deg, #f5700c, #ff9800);
+}
+.notification[data-color="danger"] {
+    background: linear-gradient(60deg, #d22824, #da3a36);
+}
+
+/* bottom heart */
+.dark-edition .footer .copyright i[data-color="purple"] {
+    background-image: linear-gradient(60deg, #7b1fa2, #913f9e);
+}
+.dark-edition .footer .copyright i[data-color="azure"] {
+    background-image: linear-gradient(60deg, #029eb1, #25b1c3);
+}
+.dark-edition .footer .copyright i[data-color="green"] {
+    background-image: linear-gradient(60deg, #288c6c, #4ea752);
+}
+.dark-edition .footer .copyright i[data-color="orange"] {
+    background-image: linear-gradient(60deg, #f5700c, #ff9800);
+}
+.dark-edition .footer .copyright i[data-color="danger"] {
+    background-image: linear-gradient(60deg, #d22824, #da3a36);
+}
+
+/* card-header color */
+
+.dark-edition .card .card-header-userprofile[data-color="purple"] .card-icon,
+.dark-edition .card .card-header-userprofile[data-color="purple"] .card-text,
+.dark-edition .card .card-header-userprofile[data-color="purple"]:not(.card-header-icon):not(.card-header-text),
+.dark-edition .card.bg-userprofile[data-color="purple"],
+.dark-edition .card.card-rotate.bg-userprofile[data-color="purple"] .front,
+.dark-edition .card.card-rotate.bg-userprofile[data-color="purple"] .back {
+  background: linear-gradient(60deg, #7b1fa2, #913f9e) !important;
+}
+
+.dark-edition .card .card-header-userprofile[data-color="azure"] .card-icon,
+.dark-edition .card .card-header-userprofile[data-color="azure"] .card-text,
+.dark-edition .card .card-header-userprofile[data-color="azure"]:not(.card-header-icon):not(.card-header-text),
+.dark-edition .card.bg-userprofile[data-color="azure"],
+.dark-edition .card.card-rotate.bg-userprofile[data-color="azure"] .front,
+.dark-edition .card.card-rotate.bg-userprofile[data-color="azure"] .back {
+  background: linear-gradient(60deg, #029eb1, #25b1c3) !important;
+}
+
+.dark-edition .card .card-header-userprofile[data-color="green"] .card-icon,
+.dark-edition .card .card-header-userprofile[data-color="green"] .card-text,
+.dark-edition .card .card-header-userprofile[data-color="green"]:not(.card-header-icon):not(.card-header-text),
+.dark-edition .card.bg-userprofile[data-color="green"],
+.dark-edition .card.card-rotate.bg-userprofile[data-color="green"] .front,
+.dark-edition .card.card-rotate.bg-userprofile[data-color="green"] .back {
+  background: linear-gradient(60deg, #288c6c, #4ea752) !important;
+}
+
+.dark-edition .card .card-header-userprofile[data-color="orange"] .card-icon,
+.dark-edition .card .card-header-userprofile[data-color="orange"] .card-text,
+.dark-edition .card .card-header-userprofile[data-color="orange"]:not(.card-header-icon):not(.card-header-text),
+.dark-edition .card.bg-userprofile[data-color="orange"],
+.dark-edition .card.card-rotate.bg-userprofile[data-color="orange"] .front,
+.dark-edition .card.card-rotate.bg-userprofile[data-color="orange"] .back {
+  background: linear-gradient(60deg, #f5700c, #ff9800) !important;
+}
+
+.dark-edition .card .card-header-userprofile[data-color="danger"] .card-icon,
+.dark-edition .card .card-header-userprofile[data-color="danger"] .card-text,
+.dark-edition .card .card-header-userprofile[data-color="danger"]:not(.card-header-icon):not(.card-header-text),
+.dark-edition .card.bg-userprofile[data-color="danger"],
+.dark-edition .card.card-rotate.bg-userprofile[data-color="danger"] .front,
+.dark-edition .card.card-rotate.bg-userprofile[data-color="danger"] .back {
+  background: linear-gradient(60deg, #d22824, #da3a36) !important;
+}
+
+/* */ 
+
+.user-cancel-btn {
+    margin: 0.3125rem 10px 0.3125rem 1px !important;
+}
