@@ -83,17 +83,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <!-- Propeller File Input Inverse -->
-                            <div class="card pmd-card bg-dark text-white">
-                                <div class="card-body"> 
-                                    <div class="custom-file pmd-custom-file">
-                                        <input type="file" class="custom-file-input" id="customFile">
-                                        <label class="custom-file-label" for="customFile">Choose file</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <div class="">
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary pull-right btn_style">Update Profile</button>

@@ -18,6 +18,7 @@
 <script>
 $(document).ready(function() {
     $().ready(function() {
+
         $color_bg = '';
 
         $btn_style_round = $('.btn_style-round'); // btn-style-round

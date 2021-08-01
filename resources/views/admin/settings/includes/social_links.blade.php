@@ -15,7 +15,9 @@
                     <div class="col-md-12">
                         <label>Facebook Profile</label>
                         <div class="form-group">
+                            @if (config('settings.social_facebook') == null)
                             <label class="bmd-label-floating" for="social_facebook">Enter facebook profile:</label>
+                            @endif
                             <input type="text" class="form-control" id="social_facebook" name="social_facebook" value="{{ config('settings.social_facebook') }}" />
                         </div>
                     </div>
@@ -25,7 +27,9 @@
                     <div class="col-md-12">
                         <label>Twitter Profile</label>
                         <div class="form-group">
+                            @if (config('settings.social_twitter') == null)
                             <label class="bmd-label-floating" for="social_twitter">Enter twitter profile:</label>
+                            @endif
                             <input type="text" class="form-control" id="social_twitter" name="social_twitter" value="{{ config('settings.social_twitter') }}" />
                         </div>
                     </div>
@@ -35,8 +39,10 @@
                     <div class="col-md-12">
                         <label>Instagram Profile</label>
                         <div class="form-group">
+                            @if (config('settings.social_instagram') == null)
                             <label class="bmd-label-floating" for="social_instagram">Enter instagram profile:</label>
-                            <input type="email" class="form-control" id="social_instagram" name="default_email_address" value="{{ config('settings.social_instagram') }}" />
+                            @endif
+                            <input type="text" class="form-control" id="social_instagram" name="social_instagram" value="{{ config('settings.social_instagram') }}" />
                         </div>
                     </div>
                 </div>
@@ -45,7 +51,9 @@
                     <div class="col-md-12">
                         <label>LinkedIn Profile</label>
                         <div class="form-group">
+                            @if (config('settings.social_linkedin') == null)
                             <label class="bmd-label-floating" for="social_linkedin">Enter linkedin profile:</label>
+                            @endif
                             <input type="text" class="form-control" id="social_linkedin" name="social_linkedin" value="{{ config('settings.social_linkedin') }}" />
                         </div>
                     </div>

@@ -285,6 +285,9 @@ php artisan make:seed SettingsTableSeeder
 
 // Open the SettingsTableSeeder class and add the $settings property in the class
 
+// Open the DatabaseSeeder class from within the database/seeds folder
+$this->call(SettingsTableSeeder::class); // in the run() function
+
 ============= Setting Model Set and Get Methods
 
 // add two static methods in our app/Models/Setting model, the first will be get() and second will be set() method.
@@ -370,34 +373,163 @@ payments.blade.php
 
 // create the subviews of our main settings page one by one.
 
-
+// styling select option
+https://www.w3schools.com/HOWTO/howto_custom_select.asp
 
 ============= Saving Settings using Setting Controller
-================================== day 02
 
+// head to SettingController and update the update() method
 
+// on top of file SettingController
+use Illuminate\Http\UploadedFile;
 
+// run migrate -- seed to create settings table and store records in database
+php artisan migrate --seed
 
-============= 
-============= 
-============= 
-============= 
-============= 
-============= 
-============= 
+================================== day 08
+https://www.larashout.com/categories-section-part-1
 
-================================== day 02
+Creating Category Model and Migration
+Creating Category Seed and Factory
+Adding Mutator for Category Model
+Adding Parent Child Relationship for Categories
 
+============= Creating Category Model and Migration
 
+php artisan make:model Models\Category -m
 
+// Open your migration file and update with the below one.
 
-============= 
-============= 
-============= 
-============= 
-============= 
-============= 
-============= 
+// open, your Category model and define the $fillable and $cast properties
+
+============= Creating Category Seed and Factory
+
+// add the database seed class and a model factory class for quickly generating dummy data
+php artisan make:seed CategoriesTableSeeder
+php artisan make:factory CategoryFactory --model=App\Models\Category
+
+// change
+factory('App\Models\Category', 10)->create();
+// to
+\App\Models\Category::factory()->count(10)->create(); 
+
+// dont add this line
+$factory->define(Category::class, function (Faker $faker)
+
+============= Adding Mutator for Category Model
+
+// Open the Category model class and add the below mutator for our name field.
+
+// change str_slug to Str::slug
+
+============= Adding Parent Child Relationship for Categories
+
+// relation will be to get the parent category of a category
+// -- use the belongsTo to define the parent relationship
+// -- add the hasMany relationship for our category to return the children for our given category.
+
+================================== day 09
+https://www.larashout.com/laravel-e-commerce-application-development-categories-section-part-2
+
+Adding Categories Routes
+Adding Categories Menu to Sidebar
+Creating Category Controller
+Creating Category Contract and Repository
+Adding Repository Service Provider
+Creating Categories List Page
+Creating Create Category Page
+Creating Edit Category Page
+Deleting A Category
+
+============= Adding Categories Routes
+
+List categories route /admin/categories
+Create category route /admin/categories/create
+Store category route /admin/categories/store
+Edit category route /admin/categories/{id}/edit
+Update category route /admin/categories/update
+Delete category route /admin/categories/{id}/delete
+
+// Open the routes/admin.php file and add the below code just after the settings routes.
+
+============= Adding Categories Menu to Sidebar
+
+open the resources/views/admin/partials/sidebar.blade.php file
+
+============= Creating Category Controller
+
+php artisan make:controller Admin\CategoryController
+
+// CategoryController file is extend this controller class with our BaseController class
+
+============= Creating Category Contract and Repository
+
+// Create a new file in app/Contracts folder and name it CategoryContract.
+
+// Create a new file in app/Repositories folder and name it CategoryRepository
+
+//  add a constructor to our class and inject the Category model in it
+
+// implement the listCategories() method 
+
+// implement the findCategoryById() method.
+
+// implement the createCategory() method in our category repository.
+
+// implement our updateCategory() method.
+
+// implementation of our deleteCategory() method.
+
+============= Adding Repository Service Provider
+
+php artisan make:provider RepositoryServiceProvider
+
+// open the RepositoryServiceProvider class and replace with the below one
+
+============= Creating Categories List Page
+
+// inject our CategoryContract interface in this controller class.
+// -- defined a $categoryRepository property and then injected the CategoryContract interface in our constructor method.
+// -- added the index() method. In this method, we loading the categories from our category repository class and setting the page titles.
+// -- returning the admin.categories.index view with categories
+
+// Add your repository service provider to in config/app.php file:
+App\Providers\RepositoryServiceProvider::class,
+
+// -- Create a new file in resources/views/admin/categories folder and name it index.blade.php
+categories/index.blade.php
+
+// create categories table in database by artisan migrate
+php artisan migrate --seed
+
+============= Creating Create Category Page
+
+// add a view from where we can create a category.
+// -- add create function in CategoryController file
+
+// create a new view in resources/admin/categories folder and name it create.blade.php
+
+// add the store() method in our CategoryController class.
+
+-- Rollback all migrations and run them all again with seeder
+C:\xampp\htdocs\bookstore> php artisan migrate:refresh --seed
+
+============= Creating Edit Category Page
+
+//  add the edit page for categories section
+
+// add the below edit() method in your CategoryController.
+
+// create a new file in categories folder and name it edit.blade.php
+
+// add the update() method in our category controller
+
+============= Deleting A Category
+
+// add a delete() method in our controller to serve the delete route.
+
+// if uploaded file not show
+php artisan storage:link
 
 ================================== day 02
 

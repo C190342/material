@@ -15,7 +15,9 @@
                     <div class="col-md-12">
                         <label>Site Name</label>
                         <div class="form-group">
+                            @if (config('settings.site_name') == null)
                             <label class="bmd-label-floating" for="site_name">Enter site name:</label>
+                            @endif
                             <input type="text" class="form-control" id="site_name" name="site_name" value="{{ config('settings.site_name') }}" />
                         </div>
                     </div>
@@ -25,7 +27,9 @@
                     <div class="col-md-12">
                         <label>Site Title</label>
                         <div class="form-group">
+                            @if (config('settings.site_title') == null)
                             <label class="bmd-label-floating" for="site_title">Enter site title:</label>
+                            @endif
                             <input type="text" class="form-control" id="site_title" name="site_title" value="{{ config('settings.site_title') }}" />
                         </div>
                     </div>
@@ -35,7 +39,9 @@
                     <div class="col-md-12">
                         <label>Default Email Address</label>
                         <div class="form-group">
+                            @if (config('settings.default_email_address') == null)
                             <label class="bmd-label-floating" for="default_email_address">Enter default email address:</label>
+                            @endif
                             <input type="email" class="form-control" id="default_email_address" name="default_email_address" value="{{ config('settings.default_email_address') }}" />
                         </div>
                     </div>
@@ -45,7 +51,9 @@
                     <div class="col-md-12">
                         <label>Currency Code</label>
                         <div class="form-group">
+                            @if (config('settings.currency_code') == null)
                             <label class="bmd-label-floating" for="currency_code">Enter currency code:</label>
+                            @endif
                             <input type="text" class="form-control" id="currency_code" name="currency_code" value="{{ config('settings.currency_code') }}" />
                         </div>
                     </div>
@@ -55,7 +63,9 @@
                     <div class="col-md-12">
                         <label>Currency Symbol</label>
                         <div class="form-group">
+                            @if (config('settings.currency_symbol') == null)
                             <label class="bmd-label-floating" for="currency_symbol">Enter currency symbol:</label>
+                            @endif
                             <input type="text" class="form-control" id="currency_symbol" name="currency_symbol" value="{{ config('settings.currency_symbol') }}" />
                         </div>
                     </div>

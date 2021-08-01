@@ -11298,7 +11298,7 @@ fieldset[disabled][disabled] .btn-group-raised .btn,
 .btn-group-sm .btn {
   padding: 0.40625rem 1.25rem;
   font-size: 0.6875rem;
-  line-height: 1.5;
+  line-height: 2.0;
   border-radius: 0.2rem;
 }
 
@@ -20784,7 +20784,7 @@ Copyright (c) 2015 Daniel Eden
   background-image: linear-gradient(to top, #9c27b0 2px, rgba(156, 39, 176, 0) 2px), linear-gradient(to top, rgba(180, 180, 180, 0.1) 1px, rgba(180, 180, 180, 0) 1px);
 }
 
-.dark-edition .form-control:invalid {
+.dark-edition .form-control:invalid, .dark-edition .form-control.is-invalid {
   background-image: linear-gradient(to top, #f44336 2px, rgba(244, 67, 54, 0) 2px), linear-gradient(to top, rgba(180, 180, 180, 0.1) 1px, rgba(180, 180, 180, 0) 1px);
 }
 

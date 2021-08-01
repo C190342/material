@@ -4,7 +4,9 @@
 
 @section('content')
     <div class="row">
-        
+        @include('admin.partials.flash')
+    </div>
+    <div class="row">
         <div class="col-md-3">
             <div class="tile p-0">
                 <ul class="nav flex-column nav-tabs user-tabs">

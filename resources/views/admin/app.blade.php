@@ -32,9 +32,9 @@
             @include('admin.partials.footer')
             <!-- footer end  -->
             <script>
-                const x = new Date().getFullYear();
+                const nowyear = new Date().getFullYear();
                 let date = document.getElementById('date');
-                date.innerHTML = '&copy; ' + x + date.innerHTML;
+                date.innerHTML = '&copy; ' + nowyear + date.innerHTML;
             </script>
         </div>
     </div>

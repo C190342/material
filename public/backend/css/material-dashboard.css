@@ -11298,7 +11298,7 @@ fieldset[disabled][disabled] .btn-group-raised .btn,
 .btn-group-sm .btn {
   padding: 0.40625rem 1.25rem;
   font-size: 0.6875rem;
-  line-height: 1.5;
+  line-height: 2.0;
   border-radius: 0.2rem;
 }
 
@@ -20784,7 +20784,7 @@ Copyright (c) 2015 Daniel Eden
   background-image: linear-gradient(to top, #9c27b0 2px, rgba(156, 39, 176, 0) 2px), linear-gradient(to top, rgba(180, 180, 180, 0.1) 1px, rgba(180, 180, 180, 0) 1px);
 }
 
-.dark-edition .form-control:invalid {
+.dark-edition .form-control:invalid, .dark-edition .form-control.is-invalid {
   background-image: linear-gradient(to top, #f44336 2px, rgba(244, 67, 54, 0) 2px), linear-gradient(to top, rgba(180, 180, 180, 0.1) 1px, rgba(180, 180, 180, 0) 1px);
 }
 
@@ -22042,73 +22042,4 @@ fieldset[disabled][disabled] .dark-edition .has-error .form-control,
   color: #a9afbbd1;
 }
 
-.dark-edition.offline-doc .page-header:after {
-  background-color: rgba(26, 32, 53, 0.7);
-}
-
-.dark-edition .alert.alert-info {
-  background: linear-gradient(60deg, #029eb1, #25b1c3);
-  background-color: unset;
-}
-
-.dark-edition .alert.alert-warning {
-  background: linear-gradient(60deg, #f5700c, #ff9800);
-  background-color: unset;
-}
-
-.dark-edition .alert.alert-success {
-  background: linear-gradient(60deg, #288c6c, #4ea752);
-  background-color: unset;
-}
-
-.dark-edition .alert.alert-danger {
-  background: linear-gradient(60deg, #d22824, #da3a36);
-  background-color: unset;
-}
-
-.dark-edition .alert.alert-primary {
-  background: linear-gradient(60deg, #7b1fa2, #913f9e);
-  background-color: unset;
-}
-
-.dark-edition .alert .close {
-  outline: 0;
-  text-shadow: none;
-  bottom: 0;
-  top: 0 !important;
-  margin-top: 0 !important;
-}
-
-.dark-edition .alert .close:hover,
-.dark-edition .alert .close:focus {
-  color: #fff;
-  opacity: 1;
-}
-
-@keyframes heartbeat {
-  0% {
-    transform: scale(0.75);
-  }
-
-  20% {
-    transform: scale(1);
-  }
-
-  40% {
-    transform: scale(0.75);
-  }
-
-  60% {
-    transform: scale(1);
-  }
-
-  80% {
-    transform: scale(0.75);
-  }
-
-  100% {
-    transform: scale(0.75);
-  }
-}
-
-/*# sourceMappingURL=material-dashboard.css.map */
+.dark-edition.offl

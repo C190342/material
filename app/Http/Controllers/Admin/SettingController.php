@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\BaseController;
+use App\Models\Setting;
 use App\Traits\UploadAble;
+use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
+use App\Http\Controllers\BaseController;
 
 class SettingController extends BaseController
 {
@@ -21,19 +23,68 @@ class SettingController extends BaseController
     }
 
     /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function showDashboard()
+    {
+        $this->setPageTitle('DashBoard', 'Websile total information');
+        return view('admin.dashboard.index');
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function showUserProfile()
+    {
+        $this->setPageTitle('User Profile', 'Details user information');
+        return view('admin.userprofile.index');
+    }
+
+    /**
      * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request)
     {
+        $folder = '/settings/';
 
+        if ($request->has('site_logo') && ($request->file('site_logo') instanceof UploadedFile)) {
+
+            // Form validation
+            /*
+            $request->validate([
+                'site_logo'     =>  'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+            ]);
+*/          
+            if (config('settings.site_logo') != null) {
+                $this->deleteOne(config('settings.site_logo'));
+            }
+            $logo = $this->uploadOne($request->file('site_logo'), $folder, 'public', ); // img
+            Setting::set('site_logo', $logo);
+
+        } elseif ($request->has('site_favicon') && ($request->file('site_favicon') instanceof UploadedFile)) {
+
+            // Form validation
+            /*
+            $request->validate([
+                'site_favicon'     =>  'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+            ]);
+*/
+            if (config('settings.site_favicon') != null) {
+                $this->deleteOne(config('settings.site_favicon'));
+            }
+            $favicon = $this->uploadOne($request->file('site_favicon'), 'settings'); // img
+            Setting::set('site_favicon', $favicon);
+
+        } else {
+
+            $keys = $request->except('_token');
+
+            foreach ($keys as $key => $value)
+            {
+                Setting::set($key, $value);
+            }
+        }
+        return $this->responseRedirectBack('Settings updated successfully.', 'success');
     }
-
-
-
-
-
-
-
-
-
 }

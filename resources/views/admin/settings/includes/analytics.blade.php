@@ -15,7 +15,9 @@
                     <div class="col-md-12">
                             <label>Google Analytics Code</label>
                             <div class="form-group">
+                                @if (config('settings.google_analytics') == null)
                                 <label class="bmd-label-floating">Enter google analytics code:</label>
+                                @endif
                                 <textarea class="form-control" rows="5"
                                 id="google_analytics"
                                 name="google_analytics"
@@ -28,7 +30,9 @@
                     <div class="col-md-12">
                             <label>Facebook Pixel Code</label>
                             <div class="form-group">
+                                @if (config('settings.facebook_pixels') == null)
                                 <label class="bmd-label-floating">Enter facebook pixel code:</label>
+                                @endif
                                 <textarea class="form-control" rows="5"
                                 name="facebook_pixels"
                                 id="facebook_pixels"

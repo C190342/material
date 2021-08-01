@@ -13,14 +13,16 @@
                 @csrf
                 <div class="row">
                     <div class="col-md-12">
-                            <label>Footer Copyright Text</label>
-                            <div class="form-group">
-                                <label class="bmd-label-floating">Enter footer copyright text:</label>
-                                <textarea class="form-control" rows="5"
-                                id="footer_copyright_text"
-                                name="footer_copyright_text"
-                                >{{ config('settings.footer_copyright_text') }}</textarea>
-                            </div>
+                        <label>Footer Copyright Text</label>
+                        <div class="form-group">
+                            @if (config('settings.footer_copyright_text') == null)
+                            <label class="bmd-label-floating" for="footer_copyright_text">Enter footer copyright text:</label>
+                            @endif
+                            <textarea class="form-control" rows="5"
+                            id="footer_copyright_text"
+                            name="footer_copyright_text"
+                            >{{ config('settings.footer_copyright_text') }}</textarea>
+                        </div>
                     </div>
                 </div>
                 
@@ -28,7 +30,9 @@
                     <div class="col-md-12">
                             <label>SEO Meta Title</label>
                             <div class="form-group">
-                                <label class="bmd-label-floating" for="site_title">Enter seo meta title for store:</label>
+                                @if (config('settings.seo_meta_title') == null)
+                                <label class="bmd-label-floating" for="seo_meta_title">Enter seo meta title for store:</label>
+                                @endif
                                 <input type="text" class="form-control" id="seo_meta_title" name="seo_meta_title" value="{{ config('settings.seo_meta_title') }}" />
                             </div>
                     </div>
@@ -38,7 +42,9 @@
                     <div class="col-md-12">
                             <label>SEO Meta Description</label>
                             <div class="form-group">
+                                @if (config('settings.seo_meta_description') == null)
                                 <label class="bmd-label-floating">Enter seo meta description for store:</label>
+                                @endif
                                 <textarea class="form-control" rows="5"
                                 name="seo_meta_description"
                                 id="seo_meta_description"

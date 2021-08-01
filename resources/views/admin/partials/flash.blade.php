@@ -6,7 +6,7 @@
 @endphp
 
 @if ($errors) @foreach($errors as $key => $value)
-    <div class="alert alert-danger">
+    <div class="alert alert-danger" style="width: 100%;">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <i class="material-icons">close</i>
         </button>
@@ -17,7 +17,7 @@
 @endforeach @endif
 
 @if ($messages) @foreach($messages as $key => $value)
-    <div class="alert alert-success">
+    <div class="alert alert-success" style="width: 100%;">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <i class="material-icons">close</i>
         </button>
@@ -28,7 +28,7 @@
 @endforeach @endif
 
 @if ($info) @foreach($info as $key => $value)
-    <div class="alert alert-info">
+    <div class="alert alert-info" style="width: 100%;">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <i class="material-icons">close</i>
         </button>
@@ -38,7 +38,7 @@
 @endforeach @endif
 
 @if ($warnings) @foreach($warnings as $key => $value)
-    <div class="alert alert-warning">
+    <div class="alert alert-warning" style="width: 100%;">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <i class="material-icons">close</i>
         </button>

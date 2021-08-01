@@ -11,7 +11,7 @@
         <div class="card-body">
             <form action="{{ route('admin.settings.update') }}" method="POST" role="form">
                 @csrf
-                <div class="row">
+                <div class="row" style="padding-top: 20px;">
                     <div class="col-3">
                         @if (config('settings.site_logo') != null)
                             <img src="{{ asset('storage/'.config('settings.site_logo')) }}" id="logoImg" style="width: 80px; height: auto;">
@@ -30,7 +30,7 @@
                     </div>
                 </div>
 
-                <div class="row ">
+                <div class="row " style="padding-top: 20px;">
                     <div class="col-3">
                         @if (config('settings.site_favicon') != null)
                             <img src="{{ asset('storage/'.config('settings.site_favicon')) }}" id="faviconImg" style="width: 80px; height: auto;">

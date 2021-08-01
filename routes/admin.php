@@ -12,18 +12,29 @@ Route::group(['prefix'  =>  'admin'], function () {
     // chec Auth
     Route::group(['middleware' => ['auth:admin']], function () {
 
-        Route::get('/', function () {
-            return view('admin.dashboard.index');
-        })->name('admin.dashboard');
+        Route::get('/', 'Admin\SettingController@showDashboard')->name('admin.dashboard');
     
-        Route::get('/UserProfile', function () {
-            return view('admin.userprofile.index');
-        })->name('admin.userprofile');
+        Route::get('/UserProfile', 'Admin\SettingController@showUserProfile')->name('admin.userprofile');
 
         Route::get('/settings', 'Admin\SettingController@index')->name('admin.settings');
         Route::post('/settings', 'Admin\SettingController@update')->name('admin.settings.update');
 
+        // route categories
+        Route::group(['prefix'  =>   'categories'], function() {
 
+            Route::get('/', 'Admin\CategoryController@index')->name('admin.categories.index');
+            Route::get('/create', 'Admin\CategoryController@create')->name('admin.categories.create');
+            Route::post('/store', 'Admin\CategoryController@store')->name('admin.categories.store');
+            Route::get('/{id}/edit', 'Admin\CategoryController@edit')->name('admin.categories.edit');
+            Route::post('/update', 'Admin\CategoryController@update')->name('admin.categories.update');
+            Route::get('/{id}/delete', 'Admin\CategoryController@delete')->name('admin.categories.delete');
+        
+        });
+
+
+
+
+        
     });
 
 });

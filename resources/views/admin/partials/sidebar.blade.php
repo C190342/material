@@ -23,16 +23,20 @@
                     <p>User Profile</p>
                 </a>
             </li>
-            <li class="nav-item {{ Route::currentRouteName() == 'admin.settings' ? 'active' : '' }}">
+            <li class="nav-item @if (Route::currentRouteName() == 'admin.settings') active @endif">
                 <a class="nav-link" href="{{ route('admin.settings') }}">
                     <i class="material-icons">settings</i>
                     <p>Settings</p>
                 </a>
             </li>
-            <li class="nav-item {{ Route::currentRouteName() == 'admin.dashboard2' ? 'active' : '' }}">
-                <a class="nav-link" href="./typography.html">
+            <li class="nav-item @if (Route::currentRouteName() == 'admin.categories.index') active 
+            @elseif (Route::currentRouteName() == 'admin.categories.create') active 
+            @elseif (Route::currentRouteName() == 'admin.categories.edit') active
+            @else ''
+            @endif ">
+                <a class="nav-link" href="{{ route('admin.categories.index') }}">
                     <i class="material-icons">library_books</i>
-                    <p>Typography</p>
+                    <p>Categories</p>
                 </a>
             </li>
             <li class="nav-item {{ Route::currentRouteName() == 'admin.dashboard3' ? 'active' : '' }}">
